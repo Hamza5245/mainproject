@@ -1,0 +1,18 @@
+/* For devices with a maximum width of 768 pixels (tablets) */
+@media only screen and (max-width: 768px) {
+    /* Your CSS styles for tablets here */
+}
+
+/* For devices with a maximum width of 480 pixels (typical smartphones) */
+@media only screen and (max-width: 480px) {
+    /* Your CSS styles for smartphones here */
+
+.forNewResponsive{
+    display: none;
+
+}
+.forResponsivelogin{
+    padding: 20px !important;
+   
+}
+}

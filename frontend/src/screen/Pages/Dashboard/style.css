@@ -1,0 +1,102 @@
+.table {
+    /* max-height: 280px; */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .table .cellWrapper {
+    display: flex;
+    align-items: center;
+  }
+  .table .cellWrapper > div {
+    display: flex;
+    flex-direction: column;
+  }
+  .table .cellWrapper > div > span:nth-child(1) {
+    color: #646679;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  .table .cellWrapper > div > span:nth-child(2) {
+    color: #d6d6db;
+    font-weight: 300;
+  }
+  .table .cellWrapper .image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+  .tableHeadCell {
+    color: #646679 !important;
+    font-weight: 600 !important;
+  }
+  .tableRow:hover {
+    background-color: #f6f6f7;
+    transition: 0.3s linear ease-in-out;
+  }
+  .tableCell:nth-child(2) {
+    color: #b4b5be;
+  }
+  .tableCell:nth-child(3) {
+    color: #646679;
+    font-weight: 500 !important;
+  }
+  .table .status {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .table .status.Active {
+    color: #a2e972;
+    background-color: #e7f4de;
+  }
+  .table .status.Pending {
+    color: #fdb936;
+    background-color: #f8efde;
+  }
+  .table .status.Inactive {
+    color: #828c9d;
+    background-color: #e6e8ea;
+  }
+  /* second */
+  .section {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+    /* border-bottom: none; */
+  }
+  .section > div {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+  .section > div > p {
+    color: #a8a9b4;
+  }
+  .section > div > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    color: #6d6f80;
+  }
+  .image_container {
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+  }
+  .image_container > div {
+    width: 100px;
+    height: 100px;
+    border-radius: 0.3rem;
+    /* background-color: orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: pointer;
+  }
+  .image_container > div > img {
+    position: absolute;
+    width: 100%;
+  }
+ 
