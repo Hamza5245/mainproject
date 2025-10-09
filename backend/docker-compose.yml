@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   # The web service for your Node.js application
-  web:
+  backend:
     build: .
     ports:
       # Map container port 8000 to host port 8000
