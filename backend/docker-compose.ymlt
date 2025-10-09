@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # The web service for your Node.js application
+  web:
+    build: .
+    ports:
+      # Map container port 8000 to host port 8000
+      - "8000:8000"
+    environment:
+      # Use the 'mongo' service name as the hostname
+      MONGODB_URI: "mongodb://mongo:27017/almumtaz"
+    depends_on:
+      - mongo
+
+  # The mongo service for the database
+  mongo:
+    image: mongo:latest
+    ports:
+      # Expose MongoDB's default port
+      - "27017:27017"
+    volumes:
+      # Persist data to prevent data loss on container restart
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
