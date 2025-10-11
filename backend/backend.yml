@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Added namespace for clarity and consistency
+  name: backend-deployment
+  namespace: three
+  labels:
+    app: backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+      - name: backend-container
+        image: hamza5245/backend:v1.4
+        ports:
+        - containerPort: 8000
+
+        # Environment variables block
+        env:
+        - name: MONGO_URI
+          # -----------------------------------------------------------------
+          # CRITICAL FIX: The service name must be correct.
+          # The correct service name is 'mongodb-service' (from mongo-svc.yml)
+          # The ClusterIP/Service IP is used for internal communication.
+          # -----------------------------------------------------------------
+          value: "mongodb://mongodb-service:27017/almumtaz"
+
+        # No volume mounts defined here, as it's a stateless backend
+        # ...
+
+---
+
+# 2. BACKEND NODEPORT SERVICE (External Access)
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+  namespace: three 
+spec:
+  selector:
+    app: backend-app
+  ports:
+    - protocol: TCP
+      port: 8000 # 
+      targetPort: 8000
+  type: NodePort

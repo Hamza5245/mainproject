@@ -1,0 +1,76 @@
+#
+# 1. MongoDB Persistent Volume Claim (PVC) - CRITICAL FIX
+#
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # CRITICAL: This name must match the claimName used by the Deployment
+  name: mongo-volume-claimabc
+  namespace: three
+spec:
+  # Defines access mode (ReadWriteOnce is typical for single-pod databases)
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      # Request 1 Gigabyte of storage (adjust size as needed for your data)
+      storage: 1Gi
+  # storageClassName: standard # Uncomment and set this if required by your cluster
+
+---
+
+#
+# 2. MongoDB Deployment (Defines the Pods)
+#
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: three
+spec:
+  # The Deployment consumes the PVC defined above
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mon
+        image: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+          # Mounts the volume into the container's data directory
+          - name: mongo-volume
+            mountPath: /data/db # Changed to the default MongoDB data path
+      volumes:
+      - name: mongo-volume
+        persistentVolumeClaim:
+          # This reference now correctly targets the PVC defined in section 1
+          claimName: mongo-volume-claimabc
+
+---
+
+#
+# 3. MongoDB Service (Exposes the Pods using NodePort)
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  namespace: three
+  labels:
+    app: mongodb
+spec:
+  type: NodePort
+  selector:
+    app: mongodb
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017
+    # nodePort: 30007 # You can uncomment this if you need a static port
