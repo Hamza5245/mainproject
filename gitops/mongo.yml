@@ -7,6 +7,8 @@ metadata:
   # CRITICAL: This name must match the claimName used by the Deployment
   name: mongo-volume-claimabc
   namespace: three
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   # Defines access mode (ReadWriteOnce is typical for single-pod databases)
   accessModes:

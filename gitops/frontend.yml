@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: frontend-deployment
   namespace: three
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   labels:
     app: frontend-app
 spec:

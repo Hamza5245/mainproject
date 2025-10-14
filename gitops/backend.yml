@@ -4,6 +4,8 @@ metadata:
   # Added namespace for clarity and consistency
   name: backend-deployment
   namespace: three
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
   labels:
     app: backend-app
 spec:
