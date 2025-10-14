@@ -7,10 +7,15 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 
-# Copy the CRITICAL Firebase service account key file
-# We are copying it into the 'auth' folder inside the container, 
-# as the error log suggests it is needed by 'auth/sendCustomNotification.js'
+# --- REMOVING YOUR PREVIOUS EXPLICIT COPY ---
+# We will rely on the comprehensive 'COPY . .' line below.
+# If you kept the previous line, it would be an unnecessary duplicate,
+# but it wouldn't cause the crash. The crash means the file is MISSING 
+# from the build context.
+
 # Copy the rest of your application code
+# This copies your local 'auth/almumtaz-f445e-firebase-adminsdk-fbsvc-5d9604f4f6.json'
+# to the container path '/usr/src/app/auth/almumtaz-f445e-firebase-adminsdk-fbsvc-5d9604f4f6.json'
 COPY . .
 
 # The port your app listens on
