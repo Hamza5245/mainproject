@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: hamza5245/frontend:v1.6 # Ensure this image is built with the new nginx.conf
+        image: hamza5245/frontend:v1.7 # Ensure this image is built with the new nginx.conf
         ports:
         # NGINX inside the container listens on port 80 (as per your Dockerfile)
         - containerPort: 80 
