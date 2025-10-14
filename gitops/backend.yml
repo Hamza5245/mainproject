@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: backend-container
-        image: hamza5245/backend:v1.4
+        image: hamza5245/backend:v1.5
         ports:
         - containerPort: 8000
 
