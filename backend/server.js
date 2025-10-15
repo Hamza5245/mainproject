@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1/almumtaz')
+mongoose.connect('mongodb://175.168.0.210:27017/almumtaz')
   .then(() => console.log('Connection Successfull!'))
   .catch((err)=>console.log(err));
 
@@ -44,7 +44,7 @@ mongoose.connect('mongodb://127.0.0.1/almumtaz')
 
 const connectMongoDB = async() => {
     try{
-        const conn = await mongoose.connect('mongodb://127.0.0.1/almumtaz')
+        const conn = await mongoose.connect('mongodb://175.168.0.210:27017/almumtaz')
         console.log("Successfully Connected")
     }catch(error){
         console.log('Error in connecting DataBase ${error}.bgRed.white')
