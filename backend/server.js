@@ -56,7 +56,7 @@ const initializeAdmin = async () => {
 
 // Application Startup Logic (Single Entry Point)
 const PORT=process.env.PORT || 8000
-const MONGO_URI = 'mongodb://mongo:27017/almumtaz';
+const MONGO_URI = 'mongodb://127.0.0.1:27017/almumtaz';
 
 const startApp = async () => {
     try {
