@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: backend-container
-        image: hamza5245/backend:v1.8
+        image: hamza5245/backend:v1.9
 <<<<<<< HEAD
 =======
         imagePullPolicy: Always
