@@ -20,6 +20,7 @@ spec:
       - name: backend-container
         image: hamza5245/backend:v1.4
         ports:
+        imagePullPolicy: Always
         - containerPort: 8000
 
         # Environment variables block

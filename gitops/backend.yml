@@ -21,6 +21,10 @@ spec:
       containers:
       - name: backend-container
         image: hamza5245/backend:v1.8
+<<<<<<< HEAD
+=======
+        imagePullPolicy: Always
+>>>>>>> e212de1 (after change of js)
         ports:
         - containerPort: 8000
 
