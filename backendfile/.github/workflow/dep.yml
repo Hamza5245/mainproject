@@ -21,6 +21,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
-        context: ./backendfile  
+        context: ./backendfile
         push: true
         tags: hamza5245/backendgithub:v1.0
+
